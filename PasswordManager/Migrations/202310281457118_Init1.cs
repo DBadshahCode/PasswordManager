@@ -1,8 +1,7 @@
 ﻿namespace PasswordManager.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class Init1 : DbMigration
     {
         public override void Up()
@@ -10,22 +9,22 @@
             CreateTable(
                 "dbo.Accounts",
                 c => new
-                    {
-                        SysId = c.Guid(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        UpdatedDate = c.DateTime(),
-                        Name = c.String(),
-                        CategoryId = c.Guid(),
-                        WebsiteId = c.Guid(),
-                        UserId = c.Guid(),
-                        PasswordId = c.Guid(),
-                        PinId = c.Guid(),
-                        EmailId = c.Guid(),
-                        PhoneId = c.Guid(),
-                        SecurityType = c.Int(nullable: false),
-                        Comments = c.String(),
-                        Closed = c.Boolean(nullable: false),
-                    })
+                {
+                    SysId = c.Guid(nullable: false),
+                    CreatedDate = c.DateTime(nullable: false),
+                    UpdatedDate = c.DateTime(),
+                    Name = c.String(),
+                    CategoryId = c.Guid(),
+                    WebsiteId = c.Guid(),
+                    UserId = c.Guid(),
+                    PasswordId = c.Guid(),
+                    PinId = c.Guid(),
+                    EmailId = c.Guid(),
+                    PhoneId = c.Guid(),
+                    SecurityType = c.Int(nullable: false),
+                    Comments = c.String(),
+                    Closed = c.Boolean(nullable: false),
+                })
                 .PrimaryKey(t => t.SysId)
                 .ForeignKey("dbo.Categories", t => t.CategoryId)
                 .ForeignKey("dbo.Emails", t => t.EmailId)
@@ -41,96 +40,96 @@
                 .Index(t => t.PinId)
                 .Index(t => t.EmailId)
                 .Index(t => t.PhoneId);
-            
+
             CreateTable(
                 "dbo.Categories",
                 c => new
-                    {
-                        SysId = c.Guid(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        UpdatedDate = c.DateTime(),
-                        Name = c.String(),
-                        Status = c.Int(nullable: false),
-                    })
+                {
+                    SysId = c.Guid(nullable: false),
+                    CreatedDate = c.DateTime(nullable: false),
+                    UpdatedDate = c.DateTime(),
+                    Name = c.String(),
+                    Status = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.SysId);
-            
+
             CreateTable(
                 "dbo.Emails",
                 c => new
-                    {
-                        SysId = c.Guid(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        UpdatedDate = c.DateTime(),
-                        EmailAddress = c.String(),
-                        Status = c.Int(nullable: false),
-                    })
+                {
+                    SysId = c.Guid(nullable: false),
+                    CreatedDate = c.DateTime(nullable: false),
+                    UpdatedDate = c.DateTime(),
+                    EmailAddress = c.String(),
+                    Status = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.SysId);
-            
+
             CreateTable(
                 "dbo.Passwords",
                 c => new
-                    {
-                        SysId = c.Guid(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        UpdatedDate = c.DateTime(),
-                        Password = c.String(),
-                        PasswordGenerated = c.Boolean(nullable: false),
-                        Status = c.Int(nullable: false),
-                    })
+                {
+                    SysId = c.Guid(nullable: false),
+                    CreatedDate = c.DateTime(nullable: false),
+                    UpdatedDate = c.DateTime(),
+                    Password = c.String(),
+                    PasswordGenerated = c.Boolean(nullable: false),
+                    Status = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.SysId);
-            
+
             CreateTable(
                 "dbo.Phones",
                 c => new
-                    {
-                        SysId = c.Guid(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        UpdatedDate = c.DateTime(),
-                        Number = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Status = c.Int(nullable: false),
-                    })
+                {
+                    SysId = c.Guid(nullable: false),
+                    CreatedDate = c.DateTime(nullable: false),
+                    UpdatedDate = c.DateTime(),
+                    Number = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    Status = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.SysId);
-            
+
             CreateTable(
                 "dbo.Pins",
                 c => new
-                    {
-                        SysId = c.Guid(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        UpdatedDate = c.DateTime(),
-                        Pin = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        PinGenerated = c.Boolean(nullable: false),
-                        Status = c.Int(nullable: false),
-                    })
+                {
+                    SysId = c.Guid(nullable: false),
+                    CreatedDate = c.DateTime(nullable: false),
+                    UpdatedDate = c.DateTime(),
+                    Pin = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    PinGenerated = c.Boolean(nullable: false),
+                    Status = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.SysId);
-            
+
             CreateTable(
                 "dbo.Users",
                 c => new
-                    {
-                        SysId = c.Guid(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        UpdatedDate = c.DateTime(),
-                        Name = c.String(),
-                        Status = c.Int(nullable: false),
-                    })
+                {
+                    SysId = c.Guid(nullable: false),
+                    CreatedDate = c.DateTime(nullable: false),
+                    UpdatedDate = c.DateTime(),
+                    Name = c.String(),
+                    Status = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.SysId);
-            
+
             CreateTable(
                 "dbo.Websites",
                 c => new
-                    {
-                        SysId = c.Guid(nullable: false),
-                        CreatedDate = c.DateTime(nullable: false),
-                        UpdatedDate = c.DateTime(),
-                        Name = c.String(),
-                        Url = c.String(),
-                        Status = c.Int(nullable: false),
-                    })
+                {
+                    SysId = c.Guid(nullable: false),
+                    CreatedDate = c.DateTime(nullable: false),
+                    UpdatedDate = c.DateTime(),
+                    Name = c.String(),
+                    Url = c.String(),
+                    Status = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.SysId);
-            
+
         }
-        
+
         public override void Down()
         {
             DropForeignKey("dbo.Accounts", "WebsiteId", "dbo.Websites");

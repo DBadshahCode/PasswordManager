@@ -1,8 +1,7 @@
 ﻿namespace PasswordManager.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class Init2 : DbMigration
     {
         public override void Up()
@@ -20,7 +19,7 @@
             DropColumn("dbo.Accounts", "PasswordId");
             DropColumn("dbo.Accounts", "PinId");
         }
-        
+
         public override void Down()
         {
             AddColumn("dbo.Accounts", "PinId", c => c.Guid());

@@ -1,11 +1,9 @@
 ﻿using PasswordManager.Models;
 using PasswordManager.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PasswordManager.Controllers
@@ -38,7 +36,7 @@ namespace PasswordManager.Controllers
         {
             if (pins != null)
             {
-                if(pins.Generated)
+                if (pins.Generated)
                 {
                     StringBuilder builder = new StringBuilder();
                     Random random = new Random();
@@ -75,7 +73,7 @@ namespace PasswordManager.Controllers
                         Status = pins.Status,
                     });
                 }
-                
+
                 _context.SaveChanges();
             }
             return RedirectToAction("Index", "Pin");

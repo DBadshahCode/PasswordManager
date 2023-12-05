@@ -1,9 +1,9 @@
 ﻿using PasswordManager.Models;
 using PasswordManager.ViewModels;
 using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using System.Data.Entity;
 
 namespace PasswordManager.Controllers
 {

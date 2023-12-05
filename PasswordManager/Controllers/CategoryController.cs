@@ -1,8 +1,6 @@
 ﻿using PasswordManager.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PasswordManager.Controllers
@@ -24,9 +22,9 @@ namespace PasswordManager.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Categories categories) 
+        public ActionResult Create(Categories categories)
         {
-            if(categories != null)
+            if (categories != null)
             {
                 _context.Categories.Add(
                 new Categories()
@@ -50,7 +48,7 @@ namespace PasswordManager.Controllers
         [HttpGet]
         public ActionResult Edit(Guid id)
         {
-            var category = _context.Categories.SingleOrDefault(o => o.SysId  == id);
+            var category = _context.Categories.SingleOrDefault(o => o.SysId == id);
             return View(category);
         }
 
@@ -58,7 +56,7 @@ namespace PasswordManager.Controllers
         public ActionResult Edit(Guid id, Categories categories)
         {
             var category = _context.Categories.SingleOrDefault(o => o.SysId == id);
-            if(category != null)
+            if (category != null)
             {
                 category.UpdatedDate = DateTime.Now;
                 category.Name = categories.Name;

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 using System.Web.DynamicData;
 
 namespace PasswordManager.Models
@@ -22,7 +19,7 @@ namespace PasswordManager.Models
         public Guid? UserId { get; set; }
         public Guid? EmailId { get; set; }
         public Guid? PhoneId { get; set; }
-        public SecurityType SecurityType {  get; set; }
+        public SecurityType SecurityType { get; set; }
         public string Comments { get; set; }
         public bool Closed { get; set; }
         #endregion
