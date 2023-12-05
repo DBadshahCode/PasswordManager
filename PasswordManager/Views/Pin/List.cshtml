@@ -29,6 +29,9 @@
         <th>
             Generated
         </th>
+        <th>
+            Status
+        </th>
         <th></th>
     </tr>
 
@@ -51,6 +54,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Generated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.SysId }) |

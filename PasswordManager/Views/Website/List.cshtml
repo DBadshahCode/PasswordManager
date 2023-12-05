@@ -12,16 +12,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
+            Created Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UpdatedDate)
+            Updated Date
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Url)
+            Url
+        </th>
+        <th>
+            Status
         </th>
         <th></th>
     </tr>
@@ -41,9 +44,12 @@
             @Html.DisplayFor(modelItem => item.Url)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.SysId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SysId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SysId })
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.SysId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.SysId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.SysId })
         </td>
     </tr>
 }
