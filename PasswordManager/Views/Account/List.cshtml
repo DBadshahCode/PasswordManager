@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PasswordManager.Models.Accounts>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Created Date
+        </th>
+        <th>
+            Updated Date
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Category
+        </th>
+        <th>
+            Website
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Comments
+        </th>
+        <th>
+            Closed
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categories.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Websites.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Users.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Emails.EmailAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phones.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Closed)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SysId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SysId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SysId })
+        </td>
+    </tr>
+}
+
+</table>

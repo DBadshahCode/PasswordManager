@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PasswordManager.Models.Emails>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Created Date
+        </th>
+        <th>
+            Updated Date
+        </th>
+        <th>
+            Email Address
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SysId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SysId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SysId })
+        </td>
+    </tr>
+}
+
+</table>

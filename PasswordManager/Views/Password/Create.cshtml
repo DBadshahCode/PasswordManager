@@ -1,0 +1,78 @@
+﻿@model PasswordManager.ViewModels.PasswordViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Passwords</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passwords.AccountId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Passwords.AccountId, new SelectList(Model.Accounts, "SysId", "Name"), "Select Category", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Passwords.AccountId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passwords.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Passwords.Password, new { htmlAttributes = new { @class = "form-control", @id= "passwordField" } })
+                @Html.ValidationMessageFor(model => model.Passwords.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passwords.Generated, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Passwords.Generated, new { htmlAttributes = new { @class = "form-control", id= "generatedCheckbox" } })
+                    @Html.ValidationMessageFor(model => model.Passwords.Generated, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passwords.Length, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Passwords.Length, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Passwords.Length, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Cache the password field and the checkbox
+        var passwordField = $('#passwordField');
+        var generatedCheckbox = $('#generatedCheckbox');
+
+        // Initial state
+        passwordField.prop('disabled', generatedCheckbox.is(':checked'));
+
+        // Change event handler for the checkbox
+        generatedCheckbox.change(function () {
+            passwordField.prop('disabled', $(this).is(':checked'));
+        });
+    });
+</script>
