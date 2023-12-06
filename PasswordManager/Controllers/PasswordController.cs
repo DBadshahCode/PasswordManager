@@ -21,7 +21,7 @@ namespace PasswordManager.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            var accounts = _context.Accounts.ToList();
+            var accounts = _context.Accounts.Where(o => o.SecurityType == SecurityType.Password).ToList();
 
             var viewModel = new PasswordViewModel()
             {
