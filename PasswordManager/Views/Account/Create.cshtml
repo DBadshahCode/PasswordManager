@@ -14,7 +14,7 @@
     <h4>Accounts</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
+    <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.Name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Accounts.Name, new { htmlAttributes = new { @class = "form-control" } })
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Accounts.CategoryId, new SelectList(Model.Categories, "SysId", "Name"), "Select Category", new { @class = "form-control" })
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.WebsiteId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Accounts.WebsiteId, new SelectList(Model.Websites, "SysId", "Name"), "Select Website", new { @class = "form-control" })
@@ -38,7 +38,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Accounts.UserId, new SelectList(Model.Users, "SysId", "Name"), "Select User", new { @class = "form-control" })
@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Accounts.EmailId, new SelectList(Model.Emails, "SysId", "Name"), "Select Email", new { @class = "form-control" })
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.PhoneId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Accounts.PhoneId, new SelectList(Model.Phones, "SysId", "Name"), "Select Phone", new { @class = "form-control" })
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.SecurityType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Accounts.SecurityType, Enum.GetValues(typeof(PasswordManager.Models.SecurityType)).Cast<PasswordManager.Models.SecurityType>
@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Accounts.Comments, new { htmlAttributes = new { @class = "form-control" } })
@@ -79,9 +79,9 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="mb-3">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" class="btn btn-success" />
         </div>
     </div>
 </div>

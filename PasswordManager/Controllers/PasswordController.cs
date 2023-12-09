@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace PasswordManager.Controllers
 {
@@ -16,6 +17,25 @@ namespace PasswordManager.Controllers
         {
             var passwords = _context.Passwords.Include(o => o.Accounts).ToList();
             return View("List", passwords);
+        }
+
+        public JsonResult GetPasswords()
+        {
+            var passwords = _context.Passwords
+                .Select(o => new
+                {
+                    CreatedDate = o.CreatedDate.ToString(),
+                    UpdatedDate = o.UpdatedDate.ToString(),
+                    Account = o.Accounts.Name,
+                    o.Password,
+                    o.Length,
+                    Generated = o.Generated.ToString(),
+                    Status = o.Status.ToString(),
+                })
+                .ToList();
+            var js = new JavaScriptSerializer();
+            var data = js.Serialize(passwords);
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

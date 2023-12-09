@@ -1,1 +1,5 @@
-﻿
+﻿#hidetext {
+    text-security: disc;
+    -webkit-text-security: disc;
+    -moz-text-security: disc;
+}

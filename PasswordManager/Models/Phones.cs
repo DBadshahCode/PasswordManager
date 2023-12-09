@@ -12,7 +12,7 @@ namespace PasswordManager.Models
         public Guid SysId { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        public decimal Number { get; set; }
+        public string Number { get; set; }
         public Status Status { get; set; }
         #endregion
     }

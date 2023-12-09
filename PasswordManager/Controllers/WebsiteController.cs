@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace PasswordManager.Controllers
 {
@@ -13,6 +14,23 @@ namespace PasswordManager.Controllers
         {
             var websites = _context.Websites.ToList();
             return View("List", websites);
+        }
+
+        public JsonResult GetWebsites()
+        {
+            var websites = _context.Websites
+                .Select(o => new
+                {
+                    CreatedDate = o.CreatedDate.ToString(),
+                    UpdatedDate = o.UpdatedDate.ToString(),
+                    o.Name,
+                    o.Url,
+                    Status = o.Status.ToString(),
+                })
+                .ToList();
+            var js = new JavaScriptSerializer();
+            var data = js.Serialize(websites);
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

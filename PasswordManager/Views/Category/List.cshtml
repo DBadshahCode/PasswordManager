@@ -1,51 +1,86 @@
 ﻿@model IEnumerable<PasswordManager.Models.Categories>
 
 @{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Categories";
 }
 
-<h2>List</h2>
+<h2>Categories</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Created Date
-        </th>
-        <th>
-            Updated Date
-        </th>
-        <th>
-            Name
-        </th>
-        <th>
-            Status
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UpdatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.SysId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.SysId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.SysId })
-        </td>
-    </tr>
-}
+<table class="table" id="item-list">
+    <thead>
+        <tr>
+            <th>
+                Created Date
+            </th>
+            <th>
+                Updated Date
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Status
+            </th>
+            @*<th></th>*@
+        </tr>
+    </thead>
 
 </table>
+
+<script>
+    $.ajax({
+        "type": "GET",
+        "url": "/Category/GetCategories",
+        "datatype": "json",
+        "traditional": true
+    }).done(function (data, err) {
+        data = JSON.parse(data);
+        $("#item-list").DataTable({
+            "data": data,
+            "datatype": "json",
+            "destroy": true,
+            "columns": [
+                { data: 'CreatedDate' },
+                { data: 'UpdatedDate' },
+                { data: 'Name' },
+                { data: 'Status' },
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        })
+        console.log(err)
+    })
+    
+    //$(function () {
+    //    $.ajax({
+    //        'url': '/Category/GetCategories',
+    //        'success': function (data, err) {
+    //            $('#category-list').DataTable({
+    //                type: 'json',
+    //                dataSrc: JSON.parse(data),
+    //                columns: [
+    //                    { 'data': 'CreatedDate' },
+    //                    { 'data': 'UpdatedDate' },
+    //                    { 'data': 'Name' },
+    //                    { 'data': 'Status' }
+    //                ],
+    //                dom: 'Bfrtip',
+    //                buttons: [
+    //                    'copy', 'csv', 'excel', 'pdf', 'print'
+    //                ]
+    //            });
+    //            console.log(data);
+    //            console.log(err);
+    //        },
+    //        'failure': function (res, err) {
+    //            console.log(res);
+    //            alert(err);
+    //        }
+    //    });
+    //});
+</script>

@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace PasswordManager.Controllers
 {
@@ -16,6 +17,25 @@ namespace PasswordManager.Controllers
         {
             var pins = _context.Pins.Include(o => o.Accounts).ToList();
             return View("List", pins);
+        }
+
+        public JsonResult GetPins()
+        {
+            var accounts = _context.Pins
+                .Select(o => new
+                {
+                    CreatedDate = o.CreatedDate.ToString(),
+                    UpdatedDate = o.UpdatedDate.ToString(),
+                    Account = o.Accounts.Name,
+                    o.Pin,
+                    o.Length,
+                    Generated = o.Generated.ToString(),
+                    Status = o.Status.ToString(),
+                })
+                .ToList();
+            var js = new JavaScriptSerializer();
+            var data = js.Serialize(accounts);
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]

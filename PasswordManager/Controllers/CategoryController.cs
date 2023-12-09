@@ -1,7 +1,9 @@
 ﻿using PasswordManager.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace PasswordManager.Controllers
 {
@@ -13,6 +15,22 @@ namespace PasswordManager.Controllers
         {
             var categories = _context.Categories.ToList();
             return View("List", categories);
+        }
+
+        public JsonResult GetCategories()
+        {
+            var categories = _context.Categories
+                .Select(o => new
+                {
+                    CreatedDate = o.CreatedDate.ToString(),
+                    UpdatedDate = o.UpdatedDate.ToString(),
+                    o.Name,
+                    Status = o.Status.ToString(),
+                })
+                .ToList();
+            var js = new JavaScriptSerializer();
+            var data = js.Serialize(categories);
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         [HttpGet]
