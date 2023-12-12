@@ -49,7 +49,7 @@
     <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Accounts.EmailId, new SelectList(Model.Emails, "SysId", "Name"), "Select Email", new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.Accounts.EmailId, new SelectList(Model.Emails, "SysId", "EmailAddress"), "Select Email", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Accounts.EmailId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -57,7 +57,7 @@
     <div class="mb-3">
         @Html.LabelFor(model => model.Accounts.PhoneId, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Accounts.PhoneId, new SelectList(Model.Phones, "SysId", "Name"), "Select Phone", new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.Accounts.PhoneId, new SelectList(Model.Phones, "SysId", "Number"), "Select Phone", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Accounts.PhoneId, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -66,7 +66,7 @@
         @Html.LabelFor(model => model.Accounts.SecurityType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Accounts.SecurityType, Enum.GetValues(typeof(PasswordManager.Models.SecurityType)).Cast<PasswordManager.Models.SecurityType>
-                ().Select(i => new SelectListItem { Text = i.ToString(), Value = ((int)i).ToString() }))
+                ().Select(i => new SelectListItem { Text = i.ToString(), Value = ((int)i).ToString() }), new { @class= "form-control" })
             @Html.ValidationMessageFor(model => model.Accounts.SecurityType, "", new { @class = "text-danger" })
         </div>
     </div>

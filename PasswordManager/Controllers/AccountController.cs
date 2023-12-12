@@ -70,8 +70,7 @@ namespace PasswordManager.Controllers
         [HttpPost]
         public ActionResult Create(Accounts accounts)
         {
-            if (accounts != null)
-
+            if(accounts != null)
             {
                 _context.Accounts.Add(
                 new Accounts()

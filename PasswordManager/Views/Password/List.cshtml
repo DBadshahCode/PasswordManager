@@ -60,10 +60,30 @@
                 { data: 'Generated' },
                 { data: 'Status' },
             ],
+            'columnDefs': [
+                {
+                    'targets': 3,
+                    'createdCell': function (td) {
+                        $(td).addClass('hidetext');
+                    }
+                }
+            ],
             dom: 'Bfrtip',
             buttons: [
                 'copy', 'csv', 'excel', 'pdf', 'print'
-            ]
+            ],
+            initComplete: function () {
+                $('.hidetext').mouseover(function () {
+                    $(this).css('text-security', 'none');
+                    $(this).css('-webkit-text-security', 'none');
+                    $(this).css('-moz-text-security', 'none');
+                })
+                $('.hidetext').mouseleave(function () {
+                    $(this).css('text-security', 'disc');
+                    $(this).css('-webkit-text-security', 'disc');
+                    $(this).css('-moz-text-security', 'disc');
+                })
+            }
         })
         console.log(err)
     })
