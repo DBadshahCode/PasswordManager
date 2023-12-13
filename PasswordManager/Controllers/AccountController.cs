@@ -17,9 +17,6 @@ namespace PasswordManager.Controllers
             var accounts = _context.Accounts
                 .Include(o => o.Categories)
                 .Include(o => o.Websites)
-                .Include(o => o.Users)
-                .Include(o => o.Emails)
-                .Include(o => o.Phones)
                 .ToList();
             return View("List", accounts);
         }
@@ -32,14 +29,14 @@ namespace PasswordManager.Controllers
                     CreatedDate = o.CreatedDate.ToString(),
                     UpdatedDate = o.UpdatedDate.ToString(),
                     o.Name,
+                    o.Username,
+                    o.EmailAddress,
+                    o.MobileNumber,
                     SecurityType = o.SecurityType.ToString(),
                     o.Comments,
                     Closed = o.Closed.ToString(),
                     Category = o.Categories != null ? o.Categories.Name : "",
                     Website = o.Websites != null ? o.Websites.Name : "",
-                    User = o.Users != null ? o.Users.Name : "",
-                    Email = o.Emails != null ? o.Emails.EmailAddress : "",
-                    Phone = o.Phones != null ? o.Phones.Number : "",
                 })
                 .ToList();
             var js = new JavaScriptSerializer();
@@ -52,17 +49,11 @@ namespace PasswordManager.Controllers
         {
             var categories = _context.Categories.ToList();
             var websites = _context.Websites.ToList();
-            var users = _context.Users.ToList();
-            var emails = _context.Emails.ToList();
-            var phones = _context.Phones.ToList();
             var viewModel = new AccountViewModel()
             {
                 Accounts = new Accounts(),
                 Categories = categories,
                 Websites = websites,
-                Users = users,
-                Emails = emails,
-                Phones = phones
             };
             return View(viewModel);
         }
@@ -81,9 +72,9 @@ namespace PasswordManager.Controllers
                     Name = accounts.Name,
                     CategoryId = accounts.CategoryId,
                     WebsiteId = accounts.WebsiteId,
-                    UserId = accounts.UserId,
-                    EmailId = accounts.EmailId,
-                    PhoneId = accounts.PhoneId,
+                    Username = accounts.Username,
+                    EmailAddress = accounts.EmailAddress,
+                    MobileNumber = accounts.MobileNumber,
                     SecurityType = accounts.SecurityType,
                     Comments = accounts.Comments,
                 });
@@ -97,9 +88,6 @@ namespace PasswordManager.Controllers
             var account = _context.Accounts
                 .Include(o => o.Categories)
                 .Include(o => o.Websites)
-                .Include(o => o.Users)
-                .Include(o => o.Emails)
-                .Include(o => o.Phones)
                 .SingleOrDefault(o => o.SysId == id);
             return View(account);
         }
@@ -110,18 +98,12 @@ namespace PasswordManager.Controllers
             var account = _context.Accounts.SingleOrDefault(o => o.SysId == id);
             var category = _context.Categories.ToList();
             var website = _context.Websites.ToList();
-            var user = _context.Users.ToList();
-            var email = _context.Emails.ToList();
-            var phone = _context.Phones.ToList();
 
             var viewModel = new AccountViewModel()
             {
                 Accounts = account,
                 Categories = category,
-                Websites = website,
-                Users = user,
-                Emails = email,
-                Phones = phone,
+                Websites = website
             };
             return View(viewModel);
         }
@@ -136,9 +118,9 @@ namespace PasswordManager.Controllers
                 account.Name = accounts.Name;
                 account.CategoryId = accounts.CategoryId;
                 account.WebsiteId = accounts.WebsiteId;
-                account.UserId = accounts.UserId;
-                account.EmailId = accounts.EmailId;
-                account.PhoneId = accounts.PhoneId;
+                account.Username = accounts.Username;
+                account.EmailAddress = accounts.EmailAddress;
+                account.MobileNumber = accounts.MobileNumber;
                 account.SecurityType = accounts.SecurityType;
                 account.Comments = accounts.Comments;
                 _context.SaveChanges();

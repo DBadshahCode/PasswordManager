@@ -39,26 +39,26 @@
     </div>
 
     <div class="mb-3">
-        @Html.LabelFor(model => model.Accounts.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Accounts.Username, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Accounts.UserId, new SelectList(Model.Users, "SysId", "Name"), "Select User", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Accounts.UserId, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Accounts.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Accounts.Username, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="mb-3">
-        @Html.LabelFor(model => model.Accounts.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Accounts.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Accounts.EmailId, new SelectList(Model.Emails, "SysId", "EmailAddress"), "Select Email", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Accounts.EmailId, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Accounts.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Accounts.EmailAddress, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="mb-3">
-        @Html.LabelFor(model => model.Accounts.PhoneId, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Accounts.MobileNumber, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Accounts.PhoneId, new SelectList(Model.Phones, "SysId", "Number"), "Select Phone", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Accounts.PhoneId, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Accounts.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Accounts.MobileNumber, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -66,7 +66,7 @@
         @Html.LabelFor(model => model.Accounts.SecurityType, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Accounts.SecurityType, Enum.GetValues(typeof(PasswordManager.Models.SecurityType)).Cast<PasswordManager.Models.SecurityType>
-                ().Select(i => new SelectListItem { Text = i.ToString(), Value = ((int)i).ToString() }), new { @class= "form-control" })
+                ().Select(i => new SelectListItem { Text = i.ToString(), Value = ((int)i).ToString() }), new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Accounts.SecurityType, "", new { @class = "text-danger" })
         </div>
     </div>
