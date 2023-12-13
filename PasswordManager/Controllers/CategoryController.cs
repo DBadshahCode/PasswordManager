@@ -22,6 +22,7 @@ namespace PasswordManager.Controllers
             var categories = _context.Categories
                 .Select(o => new
                 {
+                    o.SysId,
                     CreatedDate = o.CreatedDate.ToString(),
                     UpdatedDate = o.UpdatedDate.ToString(),
                     o.Name,

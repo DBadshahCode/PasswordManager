@@ -27,7 +27,7 @@
             <th>
                 Status
             </th>
-            @*<th></th>*@
+            <th></th>
         </tr>
     </thead>
 
@@ -51,6 +51,12 @@
                 { data: 'Name' },
                 { data: 'Url' },
                 { data: 'Status' },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<a href="/Website/Edit/' + row.SysId + '">Edit</a> <a href="/Website/Details/' + row.SysId + '">View</a> <a href="/Website/Delete/' + row.SysId + '">Delete</a>';
+                    }
+                }
             ],
             dom: 'Bfrtip',
             buttons: [

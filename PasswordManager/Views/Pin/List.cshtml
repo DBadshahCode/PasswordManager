@@ -33,7 +33,7 @@
             <th>
                 Status
             </th>
-            @*<th></th>*@
+            <th></th>
         </tr>
     </thead>
 
@@ -59,6 +59,12 @@
                 { data: 'Length' },
                 { data: 'Generated' },
                 { data: 'Status' },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<a href="/Pin/Edit/' + row.SysId + '">Edit</a> <a href="/Pin/Details/' + row.SysId + '">View</a> <a href="/Pin/Delete/' + row.SysId + '">Delete</a>';
+                    }
+                }
             ],
             dom: 'Bfrtip',
             buttons: [

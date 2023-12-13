@@ -45,7 +45,7 @@
             <th>
                 Closed
             </th>
-            @*<th></th>*@
+            <th></th>
         </tr>
     </thead>
 
@@ -75,6 +75,12 @@
                 { data: 'SecurityType' },
                 { data: 'Comments' },
                 { data: 'Closed' },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<a href="/Account/Edit/' + row.SysId + '">Edit</a> <a href="/Account/Details/' + row.SysId + '">View</a> <a href="/Account/Delete/' + row.SysId + '">Delete</a>';
+                    }
+                }
             ],
             dom: 'Bfrtip',
             buttons: [

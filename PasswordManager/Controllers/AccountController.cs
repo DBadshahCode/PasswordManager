@@ -26,6 +26,7 @@ namespace PasswordManager.Controllers
             var accounts = _context.Accounts
                 .Select(o => new
                 {
+                    o.SysId,
                     CreatedDate = o.CreatedDate.ToString(),
                     UpdatedDate = o.UpdatedDate.ToString(),
                     o.Name,
